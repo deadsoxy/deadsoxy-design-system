@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DeadSoxy Design System V1.0</title>
+  <title>DeadSoxy Design System V1.1</title>
 
   <!-- Fonts: Inter as Gotham fallback, Georgia as Mrs Eaves fallback -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -484,7 +484,7 @@
     }
 
     /* ========================================================
-       PROMPT BLOCK
+       PROMPT / CODE BLOCKS
        ======================================================== */
     .prompt-block {
       background: var(--charcoal);
@@ -499,14 +499,349 @@
       position: relative;
     }
 
-    .prompt-block .copy-hint {
+    .copy-btn {
       position: absolute;
       top: var(--s3);
       right: var(--s3);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.6);
+      font-family: var(--font-mono);
       font-size: 10px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.35);
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .copy-btn:hover {
+      background: rgba(255,255,255,0.2);
+      color: rgba(255,255,255,0.9);
+    }
+    .copy-btn.copied {
+      background: var(--magenta);
+      border-color: var(--magenta);
+      color: var(--white);
+    }
+
+    /* Code blocks (light) for component code */
+    .code-block {
+      background: var(--bg-subtle);
+      color: var(--charcoal);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.7;
+      padding: var(--s4);
+      border-radius: var(--radius);
+      border: 1px solid var(--hairline);
+      white-space: pre-wrap;
+      word-break: break-word;
+      position: relative;
+      margin-bottom: var(--s3);
+      overflow-x: auto;
+    }
+
+    .code-block .copy-btn {
+      background: rgba(45,45,45,0.06);
+      border: 1px solid var(--hairline);
+      color: var(--muted);
+    }
+    .code-block .copy-btn:hover {
+      background: rgba(45,45,45,0.12);
+      color: var(--charcoal);
+    }
+    .code-block .copy-btn.copied {
+      background: var(--magenta);
+      border-color: var(--magenta);
+      color: var(--white);
+    }
+
+    /* ========================================================
+       USAGE GUIDELINES
+       ======================================================== */
+    .usage-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--s4);
+    }
+
+    .usage-step {
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      padding: var(--s4);
+    }
+
+    .usage-number {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--magenta);
+      margin-bottom: var(--s2);
+    }
+
+    .usage-step h3 {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      margin-bottom: var(--s2);
+    }
+
+    .usage-step p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .file-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: var(--s4);
+    }
+
+    .file-table th,
+    .file-table td {
+      text-align: left;
+      padding: 12px var(--s3);
+      border-bottom: 1px solid var(--hairline);
+      font-size: 14px;
+    }
+
+    .file-table th {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .file-table td:first-child {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .file-table td:last-child {
+      color: var(--muted);
+    }
+
+    /* ========================================================
+       EXAMPLE LAYOUTS
+       ======================================================== */
+    .layout-examples {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s4);
+    }
+
+    .layout-example {
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .layout-preview {
+      padding: var(--s5) var(--s4);
+      background: var(--white);
+      border-bottom: 1px solid var(--hairline);
+      min-height: 200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .layout-info {
+      padding: var(--s3);
+    }
+
+    .layout-info h4 {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: var(--s1);
+    }
+
+    .layout-info p {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    /* Mini layout components */
+    .mini-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: var(--s2);
+    }
+
+    .mini-h1 {
+      font-family: var(--font-sans);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1.3;
+      margin-bottom: var(--s2);
+    }
+
+    .mini-body {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+      margin-bottom: var(--s3);
+    }
+
+    .mini-btn {
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-family: var(--font-sans);
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      background: var(--charcoal);
+      color: var(--white);
+    }
+
+    .mini-btn-accent {
+      background: var(--magenta);
+      color: var(--white);
+    }
+
+    .mini-btn-ghost {
+      background: transparent;
+      color: var(--charcoal);
+      border: 1px solid var(--charcoal);
+    }
+
+    .mini-card {
+      border: 1px solid var(--hairline);
+      border-radius: 8px;
+      padding: var(--s3);
+    }
+
+    .mini-label {
+      font-family: var(--font-mono);
+      font-size: 8px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--magenta);
+      margin-bottom: 4px;
+    }
+
+    /* ========================================================
+       LAYOUT VISUALS
+       ======================================================== */
+    .grid-demo {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--s2);
+      margin-bottom: var(--s4);
+    }
+
+    .grid-col {
+      background: var(--magenta);
+      opacity: 0.08;
+      height: 80px;
+      border-radius: 4px;
+    }
+
+    .alignment-demo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s4);
+    }
+
+    .alignment-card {
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      padding: var(--s4);
+    }
+
+    .alignment-card h4 {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: var(--s3);
+    }
+
+    .spacing-demo-row {
+      display: flex;
+      gap: var(--s2);
+      margin-bottom: var(--s2);
+    }
+
+    .spacing-demo-box {
+      background: var(--charcoal);
+      opacity: 0.1;
+      border-radius: 4px;
+    }
+
+    /* ========================================================
+       CHANGELOG
+       ======================================================== */
+    .changelog-entry {
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      padding: var(--s4);
+      margin-bottom: var(--s3);
+    }
+
+    .changelog-version {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--charcoal);
+    }
+
+    .changelog-date {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-left: var(--s2);
+    }
+
+    .changelog-tag {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 9px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-right: 4px;
+      margin-top: var(--s2);
+    }
+
+    .tag-added { background: rgba(72, 187, 120, 0.12); color: #2F855A; }
+    .tag-changed { background: rgba(213, 0, 248, 0.1); color: var(--magenta); }
+    .tag-fixed { background: rgba(229, 62, 62, 0.1); color: #E53E3E; }
+
+    .changelog-list {
+      list-style: none;
+      margin-top: var(--s3);
+    }
+
+    .changelog-list li {
+      font-size: 14px;
+      padding: 4px 0;
+      color: var(--muted);
+    }
+
+    .changelog-list li::before {
+      content: "\2014  ";
     }
 
     /* ========================================================
@@ -533,6 +868,9 @@
       .type-specimen { grid-template-columns: 1fr; }
       .dna-grid { grid-template-columns: 1fr; }
       .never-grid { grid-template-columns: 1fr 1fr; }
+      .usage-grid { grid-template-columns: 1fr; }
+      .layout-examples { grid-template-columns: 1fr; }
+      .alignment-demo { grid-template-columns: 1fr; }
       .header h1 { font-size: 28px; }
     }
   </style>
@@ -547,11 +885,11 @@
   <div class="header">
     <img src="DeadSoxy_New_Logo.png" alt="DeadSoxy" class="header-logo" />
     <h1>Design System</h1>
-    <div class="header-meta">V1.0 &mdash; Source of truth for AI, web, packaging, decks &mdash; Updated 2026-02-25</div>
+    <div class="header-meta">V1.1 &mdash; Source of truth for AI, web, packaging, decks &mdash; Updated 2026-02-25</div>
   </div>
 
   <!-- ====================================================
-       IDENTITY
+       01 — IDENTITY
        ==================================================== -->
   <div class="section">
     <div class="kicker">01 &mdash; Identity</div>
@@ -564,7 +902,7 @@
       </div>
       <div class="identity-card">
         <div class="kicker">Positioning</div>
-        <div class="value">Premium everyday socks. Engineered details. The difference is in the construction.</div>
+        <div class="value">Product-first premium essentials. Engineered comfort. Precision construction. The difference is in the details.</div>
       </div>
     </div>
 
@@ -572,8 +910,8 @@
       <div class="kicker">Voice Tone</div>
       <div class="tone-tags">
         <span class="tone-tag">Confident</span>
-        <span class="tone-tag">Precise</span>
-        <span class="tone-tag">Refined</span>
+        <span class="tone-tag">Restrained</span>
+        <span class="tone-tag">Intelligent</span>
         <span class="tone-tag">Engineered</span>
         <span class="tone-tag">Southern Grit</span>
       </div>
@@ -594,7 +932,7 @@
   </div>
 
   <!-- ====================================================
-       COLORS
+       02 — COLORS
        ==================================================== -->
   <div class="section">
     <div class="kicker">02 &mdash; Color System</div>
@@ -655,7 +993,7 @@
   </div>
 
   <!-- ====================================================
-       TYPOGRAPHY
+       03 — TYPOGRAPHY
        ==================================================== -->
   <div class="section">
     <div class="kicker">03 &mdash; Typography</div>
@@ -730,7 +1068,7 @@
   </div>
 
   <!-- ====================================================
-       SPACING
+       04 — SPACING
        ==================================================== -->
   <div class="section">
     <div class="kicker">04 &mdash; Spacing Scale</div>
@@ -781,7 +1119,7 @@
   </div>
 
   <!-- ====================================================
-       COMPONENTS
+       05 — COMPONENTS
        ==================================================== -->
   <div class="section">
     <div class="kicker">05 &mdash; Components</div>
@@ -837,10 +1175,162 @@
   </div>
 
   <!-- ====================================================
-       VISUAL DNA
+       06 — COMPONENT CODE
        ==================================================== -->
   <div class="section">
-    <div class="kicker">06 &mdash; Visual DNA</div>
+    <div class="kicker">06 &mdash; Component Code</div>
+    <div class="section-title">Copyable HTML + CSS</div>
+
+    <div style="margin-bottom: var(--s5);">
+      <div class="kicker">Primary Button</div>
+      <div class="code-block" data-copy><button class="copy-btn">Copy</button>&lt;button class="btn btn-primary"&gt;Add to Cart&lt;/button&gt;
+
+&lt;style&gt;
+.btn-primary {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  border: none;
+  background: #2D2D2D;
+  color: #FFFFFF;
+  transition: opacity 0.15s;
+}
+.btn-primary:hover { opacity: 0.85; }
+&lt;/style&gt;</div>
+    </div>
+
+    <div style="margin-bottom: var(--s5);">
+      <div class="kicker">Accent Button</div>
+      <div class="code-block" data-copy><button class="copy-btn">Copy</button>&lt;button class="btn btn-accent"&gt;Shop Now&lt;/button&gt;
+
+&lt;style&gt;
+.btn-accent {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  background: #D500F8;
+  color: #FFFFFF;
+  transition: opacity 0.15s;
+}
+.btn-accent:hover { opacity: 0.85; }
+&lt;/style&gt;</div>
+    </div>
+
+    <div style="margin-bottom: var(--s5);">
+      <div class="kicker">Ghost Button</div>
+      <div class="code-block" data-copy><button class="copy-btn">Copy</button>&lt;button class="btn btn-ghost"&gt;Learn More&lt;/button&gt;
+
+&lt;style&gt;
+.btn-ghost {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: 999px;
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  background: transparent;
+  color: #2D2D2D;
+  border: 1px solid #2D2D2D;
+  transition: opacity 0.15s;
+}
+.btn-ghost:hover { opacity: 0.85; }
+&lt;/style&gt;</div>
+    </div>
+
+    <div style="margin-bottom: var(--s5);">
+      <div class="kicker">Card Component</div>
+      <div class="code-block" data-copy><button class="copy-btn">Copy</button>&lt;div class="ds-card"&gt;
+  &lt;span class="ds-label"&gt;Feature Label&lt;/span&gt;
+  &lt;h3&gt;Card Heading&lt;/h3&gt;
+  &lt;p&gt;Card body text goes here.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;style&gt;
+.ds-card {
+  border: 1px solid rgba(45, 45, 45, 0.12);
+  border-radius: 12px;
+  padding: 24px;
+  background: #FFFFFF;
+}
+
+.ds-label {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(45, 45, 45, 0.55);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.ds-card h3 {
+  font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: #2D2D2D;
+  margin-bottom: 8px;
+}
+
+.ds-card p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(45, 45, 45, 0.55);
+}
+&lt;/style&gt;</div>
+    </div>
+
+    <div>
+      <div class="kicker">CSS Custom Properties (Tokens)</div>
+      <div class="code-block" data-copy><button class="copy-btn">Copy</button>:root {
+  /* Colors */
+  --ds-white: #FFFFFF;
+  --ds-charcoal: #2D2D2D;
+  --ds-magenta: #D500F8;
+  --ds-gold: #FFBB3B;
+  --ds-muted: rgba(45, 45, 45, 0.55);
+  --ds-hairline: rgba(45, 45, 45, 0.12);
+  --ds-bg-subtle: #F7F7F7;
+
+  /* Typography */
+  --ds-font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  --ds-font-serif: Georgia, 'Times New Roman', serif;
+
+  /* Spacing (8pt grid) */
+  --ds-s1: 4px;  --ds-s2: 8px;  --ds-s3: 16px;
+  --ds-s4: 24px; --ds-s5: 32px; --ds-s6: 48px;
+  --ds-s7: 64px; --ds-s8: 96px;
+
+  /* Layout */
+  --ds-radius: 12px;
+  --ds-max-width: 1120px;
+}</div>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       07 — VISUAL DNA
+       ==================================================== -->
+  <div class="section">
+    <div class="kicker">07 &mdash; Visual DNA</div>
     <div class="section-title">Image + Composition Rules</div>
 
     <div class="dna-grid">
@@ -894,10 +1384,10 @@
   </div>
 
   <!-- ====================================================
-       NEVER LIST
+       08 — GUARDRAILS
        ==================================================== -->
   <div class="section">
-    <div class="kicker">07 &mdash; Guardrails</div>
+    <div class="kicker">08 &mdash; Guardrails</div>
     <div class="section-title">Never Use</div>
 
     <div class="never-grid">
@@ -920,15 +1410,249 @@
   </div>
 
   <!-- ====================================================
-       MASTER PROMPT
+       09 — USAGE GUIDELINES
        ==================================================== -->
   <div class="section">
-    <div class="kicker">08 &mdash; AI Master Prompt</div>
+    <div class="kicker">09 &mdash; Usage Guidelines</div>
+    <div class="section-title">How to Use This System</div>
+
+    <div class="usage-grid">
+      <div class="usage-step">
+        <div class="usage-number">01</div>
+        <h3>Paste Universal Prompt</h3>
+        <p>Start every AI session by pasting the Universal Prompt block from the Master Prompt file. This sets brand constraints.</p>
+      </div>
+      <div class="usage-step">
+        <div class="usage-number">02</div>
+        <h3>Add Task Prompt</h3>
+        <p>Paste the specific task prompt (product shot, landing page, email, deck, etc.) for format-specific rules.</p>
+      </div>
+      <div class="usage-step">
+        <div class="usage-number">03</div>
+        <h3>Give Your Direction</h3>
+        <p>Add your specific creative instructions. The layered approach keeps every AI output on-brand.</p>
+      </div>
+    </div>
+
+    <table class="file-table">
+      <thead>
+        <tr>
+          <th>File</th>
+          <th>Format</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>tokens.yaml</td>
+          <td>YAML</td>
+          <td>Machine-readable brand tokens for AI tools and code pipelines</td>
+        </tr>
+        <tr>
+          <td>master-prompt.md</td>
+          <td>Markdown</td>
+          <td>Copy/paste prompt blocks for ChatGPT, Claude, Midjourney, etc.</td>
+        </tr>
+        <tr>
+          <td>index.html</td>
+          <td>HTML</td>
+          <td>Visual spec page for humans &mdash; the page you are reading now</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top: var(--s5);">
+      <div class="kicker">When to Use tokens.yaml</div>
+      <div class="rule-block">
+        <ul>
+          <li>Paste relevant sections into AI context windows before giving instructions</li>
+          <li>Feed into design-to-code tools (Figma plugins, v0, Bolt, etc.)</li>
+          <li>Use as the source of truth for programmatic design decisions</li>
+          <li>Reference exact hex values, spacing scales, and type specs</li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div class="kicker">When to Use master-prompt.md</div>
+      <div class="rule-block">
+        <ul>
+          <li>Paste Universal Prompt at the start of every AI design session</li>
+          <li>Add task-specific prompt for the asset type you are creating</li>
+          <li>Use for image generation (Midjourney, DALL-E, Flux, etc.)</li>
+          <li>Use for copy generation (ChatGPT, Claude, etc.)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       10 — EXAMPLE LAYOUTS
+       ==================================================== -->
+  <div class="section">
+    <div class="kicker">10 &mdash; Approved Layouts</div>
+    <div class="section-title">Reference Compositions</div>
+
+    <div class="layout-examples">
+      <!-- Hero Section -->
+      <div class="layout-example">
+        <div class="layout-preview">
+          <div class="mini-eyebrow">Premium Essentials</div>
+          <div class="mini-h1">Engineered for All-Day Comfort.</div>
+          <div class="mini-body">Premium materials. Smart construction. Socks built to stay up and feel right from morning to night.</div>
+          <div style="display: flex; gap: 8px;">
+            <span class="mini-btn">Shop Now</span>
+            <span class="mini-btn mini-btn-ghost">Learn More</span>
+          </div>
+        </div>
+        <div class="layout-info">
+          <h4>Hero Section</h4>
+          <p>Eyebrow label, H1 headline, one body line, primary + ghost CTA. Maximum whitespace.</p>
+        </div>
+      </div>
+
+      <!-- Feature Card Grid -->
+      <div class="layout-example">
+        <div class="layout-preview" style="gap: var(--s2);">
+          <div class="mini-eyebrow">Why DeadSoxy</div>
+          <div class="mini-h1" style="font-size: 16px; margin-bottom: var(--s3);">The Details Matter.</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+            <div class="mini-card">
+              <div class="mini-label">Construction</div>
+              <div style="font-size: 11px; font-weight: 500;">TrueStay&trade; Grip</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">Material</div>
+              <div style="font-size: 11px; font-weight: 500;">Merino Blend</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">Durability</div>
+              <div style="font-size: 11px; font-weight: 500;">Reinforced Heel</div>
+            </div>
+            <div class="mini-card">
+              <div class="mini-label">Comfort</div>
+              <div style="font-size: 11px; font-weight: 500;">Cushioned Sole</div>
+            </div>
+          </div>
+        </div>
+        <div class="layout-info">
+          <h4>Feature Card Grid</h4>
+          <p>Eyebrow, section H2, 2x2 card grid with magenta micro-labels. No icons needed.</p>
+        </div>
+      </div>
+
+      <!-- Product Detail -->
+      <div class="layout-example">
+        <div class="layout-preview" style="align-items: center;">
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; width: 100%;">
+            <div style="background: var(--bg-subtle); border-radius: 8px; height: 140px; display: flex; align-items: center; justify-content: center;">
+              <span style="font-family: var(--font-mono); font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em;">Product Image</span>
+            </div>
+            <div>
+              <div class="mini-eyebrow">Merino Crew</div>
+              <div style="font-size: 16px; font-weight: 700; letter-spacing: 0.02em; text-transform: uppercase; margin-bottom: 6px;">The Everyday Crew</div>
+              <div style="font-size: 11px; color: var(--muted); line-height: 1.5; margin-bottom: 12px;">Premium merino wool. Reinforced heel and toe. TrueStay&trade; grip at the cuff.</div>
+              <span class="mini-btn mini-btn-accent">Add to Cart</span>
+            </div>
+          </div>
+        </div>
+        <div class="layout-info">
+          <h4>Product Detail</h4>
+          <p>50/50 split: product image left, details right. Eyebrow, title, body, accent CTA.</p>
+        </div>
+      </div>
+
+      <!-- Social Proof -->
+      <div class="layout-example">
+        <div class="layout-preview" style="text-align: center; align-items: center;">
+          <div>
+            <div class="mini-eyebrow" style="text-align: center;">What People Say</div>
+            <div style="font-family: var(--font-serif); font-size: 16px; line-height: 1.4; margin: 12px 0; font-style: italic;">"The best socks I have ever owned. Period."</div>
+            <div style="font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted);">Jake M. &mdash; Verified Buyer</div>
+          </div>
+        </div>
+        <div class="layout-info">
+          <h4>Social Proof / Testimonial</h4>
+          <p>Centered layout. Editorial serif for the quote (max 1 per layout). Mono label for attribution.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       11 — LAYOUT SYSTEM VISUALS
+       ==================================================== -->
+  <div class="section">
+    <div class="kicker">11 &mdash; Layout System</div>
+    <div class="section-title">Grid + Alignment</div>
+
+    <div style="margin-bottom: var(--s5);">
+      <div class="kicker">12-Column Grid</div>
+      <div class="grid-demo">
+        <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+        <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+        <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+        <div class="grid-col"></div><div class="grid-col"></div><div class="grid-col"></div>
+      </div>
+      <div class="note">12 columns, 8px gutter. Max content width: 1120px. All elements snap to grid.</div>
+    </div>
+
+    <div class="alignment-demo">
+      <div class="alignment-card">
+        <h4>Section Spacing</h4>
+        <div style="display: flex; flex-direction: column; gap: 4px;">
+          <div style="background: var(--charcoal); height: 8px; border-radius: 2px; opacity: 0.15;"></div>
+          <div style="display: flex; align-items: center; gap: 8px; padding: 4px 0;">
+            <div style="height: 1px; flex: 1; background: var(--magenta); opacity: 0.3;"></div>
+            <span style="font-family: var(--font-mono); font-size: 9px; color: var(--magenta);">64px</span>
+            <div style="height: 1px; flex: 1; background: var(--magenta); opacity: 0.3;"></div>
+          </div>
+          <div style="background: var(--charcoal); height: 8px; border-radius: 2px; opacity: 0.15;"></div>
+          <div style="display: flex; align-items: center; gap: 8px; padding: 4px 0;">
+            <div style="height: 1px; flex: 1; background: var(--magenta); opacity: 0.3;"></div>
+            <span style="font-family: var(--font-mono); font-size: 9px; color: var(--magenta);">64px</span>
+            <div style="height: 1px; flex: 1; background: var(--magenta); opacity: 0.3;"></div>
+          </div>
+          <div style="background: var(--charcoal); height: 8px; border-radius: 2px; opacity: 0.15;"></div>
+        </div>
+        <div class="note">Minimum 64px between major sections. Use 96px for hero-to-content transitions.</div>
+      </div>
+
+      <div class="alignment-card">
+        <h4>Content Hierarchy</h4>
+        <div style="display: flex; flex-direction: column; gap: 6px;">
+          <div style="font-family: var(--font-mono); font-size: 8px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted);">Eyebrow Label</div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="height: 1px; width: 20px; background: var(--magenta); opacity: 0.3;"></div>
+            <span style="font-family: var(--font-mono); font-size: 8px; color: var(--magenta);">8px</span>
+          </div>
+          <div style="font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em;">Section Headline</div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="height: 1px; width: 20px; background: var(--magenta); opacity: 0.3;"></div>
+            <span style="font-family: var(--font-mono); font-size: 8px; color: var(--magenta);">16px</span>
+          </div>
+          <div style="font-size: 12px; color: var(--muted); line-height: 1.5;">Body text follows with appropriate spacing from the headline above.</div>
+          <div style="display: flex; align-items: center; gap: 8px;">
+            <div style="height: 1px; width: 20px; background: var(--magenta); opacity: 0.3;"></div>
+            <span style="font-family: var(--font-mono); font-size: 8px; color: var(--magenta);">24px</span>
+          </div>
+          <span class="mini-btn" style="align-self: flex-start;">Primary CTA</span>
+        </div>
+        <div class="note">Consistent vertical rhythm: eyebrow 8px to headline, 16px to body, 24px to CTA.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       12 — AI MASTER PROMPT
+       ==================================================== -->
+  <div class="section">
+    <div class="kicker">12 &mdash; AI Master Prompt</div>
     <div class="section-title">Copy + Paste Into Any AI Tool</div>
 
-    <div class="prompt-block"><span class="copy-hint">Copy this block</span>You are designing for DeadSoxy, a premium everyday sock brand.
+    <div class="prompt-block" data-copy><button class="copy-btn">Copy</button>You are designing for DeadSoxy, a product-first premium essentials brand built on engineered comfort and precision construction.
 
-BRAND: Confident, precise, engineered, refined. Never loud, never hypey.
+BRAND: Confident, restrained, intelligent, engineered. Never hype-driven, never loud, never gimmicky. Prioritize clarity, craftsmanship, and subtle performance advantages (like TrueStay&trade; grip) &mdash; not trendiness or decoration.
 
 COLORS:
 - Charcoal #2D2D2D &mdash; primary (min 50%)
@@ -959,13 +1683,89 @@ NEVER:
   </div>
 
   <!-- ====================================================
+       13 — VERSION CHANGELOG
+       ==================================================== -->
+  <div class="section">
+    <div class="kicker">13 &mdash; Changelog</div>
+    <div class="section-title">Version History</div>
+
+    <div class="changelog-entry">
+      <span class="changelog-version">V1.1</span>
+      <span class="changelog-date">2026-02-25</span>
+      <div>
+        <span class="changelog-tag tag-added">Added</span>
+        <span class="changelog-tag tag-changed">Changed</span>
+      </div>
+      <ul class="changelog-list">
+        <li>Added Usage Guidelines section with file reference table</li>
+        <li>Added Component Code section with copyable HTML/CSS snippets</li>
+        <li>Added Approved Example Layouts with four reference compositions</li>
+        <li>Added Layout System Visuals with grid and spacing diagrams</li>
+        <li>Added single-click copy-to-clipboard on all code and prompt blocks</li>
+        <li>Added Version Changelog</li>
+        <li>Updated brand positioning to include TrueStay&trade; grip and refined language</li>
+        <li>Updated voice tone tags: "Precise" and "Refined" replaced with "Restrained" and "Intelligent"</li>
+      </ul>
+    </div>
+
+    <div class="changelog-entry">
+      <span class="changelog-version">V1.0</span>
+      <span class="changelog-date">2026-02-25</span>
+      <div>
+        <span class="changelog-tag tag-added">Added</span>
+      </div>
+      <ul class="changelog-list">
+        <li>Initial release: Identity, Color System, Typography, Spacing, Components, Visual DNA, Guardrails, AI Master Prompt</li>
+        <li>tokens.yaml &mdash; machine-readable brand tokens</li>
+        <li>master-prompt.md &mdash; 10 copy/paste AI prompt blocks</li>
+        <li>index.html &mdash; visual spec page</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ====================================================
        FOOTER
        ==================================================== -->
   <div class="footer">
     <img src="DeadSoxy_New_Logo.png" alt="DeadSoxy" style="height: 20px; opacity: 0.3; margin-bottom: var(--s3);" /><br />
-    <div class="footer-text">DeadSoxy Design System V1.0 &mdash; Built for AI, humans, and everyone in between.</div>
+    <div class="footer-text">DeadSoxy Design System V1.1 &mdash; Built for AI, humans, and everyone in between.</div>
   </div>
 
 </div>
+
+<!-- ====================================================
+     COPY-TO-CLIPBOARD JAVASCRIPT
+     ==================================================== -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var block = btn.closest('[data-copy]');
+      if (!block) return;
+
+      // Get the text content, excluding the button text itself
+      var clone = block.cloneNode(true);
+      var buttons = clone.querySelectorAll('.copy-btn');
+      buttons.forEach(function (b) { b.remove(); });
+      var text = clone.textContent.trim();
+
+      // Decode HTML entities for clean clipboard content
+      var textarea = document.createElement('textarea');
+      textarea.innerHTML = text;
+      text = textarea.value;
+
+      navigator.clipboard.writeText(text).then(function () {
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(function () {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    });
+  });
+});
+</script>
+
 </body>
 </html>

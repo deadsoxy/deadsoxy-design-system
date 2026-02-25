@@ -1,5 +1,5 @@
 # ============================================================
-# DEADSOXY DESIGN SYSTEM — V1.0
+# DEADSOXY DESIGN SYSTEM — V1.1
 # Machine-readable brand tokens for AI tools
 # ============================================================
 # Paste this (or relevant sections) into any AI tool's context
@@ -8,7 +8,7 @@
 
 system:
   name: "DeadSoxy Design System"
-  version: "1.0"
+  version: "1.1"
   updated: "2026-02-25"
   purpose: "Structured brand constraints for AI design tools"
 
@@ -19,10 +19,14 @@ identity:
   name: "DeadSoxy"
   core_line: "Smart design, premium fabrics, superior socks."
   positioning: >
-    DeadSoxy makes premium everyday socks engineered with superior
-    materials and smart construction details. For people who care
-    about what they put on — not hype, not fashion, just better
-    product. The difference is in the details.
+    DeadSoxy is a product-first premium essentials brand built on
+    engineered comfort and precision construction. The tone is
+    confident, restrained, and intelligent — never hype-driven,
+    never loud, never gimmicky. Designs should feel clean, structured,
+    and intentional, with strong hierarchy, controlled use of Magenta
+    as an accent, and generous whitespace. Prioritize clarity,
+    craftsmanship, and subtle performance advantages (like TrueStay™
+    grip), not trendiness or decoration.
 
   tone:
     voice_adjectives:
