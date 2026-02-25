@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DeadSoxy Design System V1.0</title>
+
+  <!-- Fonts: Inter as Gotham fallback, Georgia as Mrs Eaves fallback -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ========================================================
+       TOKENS
+       ======================================================== */
+    :root {
+      --white: #FFFFFF;
+      --charcoal: #2D2D2D;
+      --magenta: #D500F8;
+      --gold: #FFBB3B;
+
+      --muted: rgba(45, 45, 45, 0.55);
+      --hairline: rgba(45, 45, 45, 0.12);
+      --bg-subtle: #F7F7F7;
+
+      --font-sans: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+      --font-serif: Georgia, 'Times New Roman', serif;
+      --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+      --s1: 4px;  --s2: 8px;  --s3: 16px; --s4: 24px;
+      --s5: 32px; --s6: 48px; --s7: 64px; --s8: 96px;
+
+      --radius: 12px;
+      --max-w: 1120px;
+    }
+
+    /* ========================================================
+       RESET + BASE
+       ======================================================== */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--charcoal);
+      background: var(--white);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* ========================================================
+       LAYOUT
+       ======================================================== */
+    .wrap {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: var(--s7) var(--s4);
+    }
+
+    .section {
+      padding: var(--s7) 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+    .section:last-child { border-bottom: none; }
+
+    /* ========================================================
+       TYPOGRAPHY CLASSES
+       ======================================================== */
+    .kicker {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: var(--s2);
+    }
+
+    .section-title {
+      font-family: var(--font-sans);
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: var(--s5);
+    }
+
+    .note {
+      font-size: 14px;
+      color: var(--muted);
+      margin-top: var(--s2);
+    }
+
+    .editorial {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      line-height: 1.4;
+    }
+
+    /* ========================================================
+       HEADER
+       ======================================================== */
+    .header {
+      padding: var(--s8) 0 var(--s7) 0;
+      border-bottom: 1px solid var(--hairline);
+    }
+
+    .header-logo {
+      height: 32px;
+      margin-bottom: var(--s5);
+    }
+
+    .header h1 {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1.2;
+      margin-bottom: var(--s3);
+    }
+
+    .header-meta {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ========================================================
+       IDENTITY
+       ======================================================== */
+    .identity-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s4);
+    }
+
+    .identity-card {
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      padding: var(--s4);
+    }
+
+    .identity-card .value {
+      font-size: 18px;
+      font-weight: 500;
+      margin-top: var(--s2);
+    }
+
+    .tone-tags {
+      display: flex;
+      gap: var(--s2);
+      flex-wrap: wrap;
+      margin-top: var(--s3);
+    }
+
+    .tone-tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: 1px solid var(--hairline);
+      border-radius: 999px;
+    }
+
+    .anti-list {
+      list-style: none;
+      margin-top: var(--s3);
+    }
+
+    .anti-list li {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      padding: 6px 0;
+      color: var(--muted);
+    }
+
+    .anti-list li::before {
+      content: "\2715  ";
+      color: var(--magenta);
+    }
+
+    /* ========================================================
+       COLORS
+       ======================================================== */
+    .swatches {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--s3);
+    }
+
+    .swatch {
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .swatch-chip { height: 120px; }
+
+    .swatch-info {
+      padding: var(--s3);
+    }
+
+    .swatch-name {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .swatch-hex {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .swatch-role {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: var(--s2);
+    }
+
+    .swatch-rule {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--magenta);
+      margin-top: var(--s1);
+    }
+
+    .color-rules {
+      margin-top: var(--s5);
+      padding: var(--s4);
+      background: var(--bg-subtle);
+      border-radius: var(--radius);
+    }
+
+    .color-rules ul {
+      list-style: none;
+    }
+
+    .color-rules li {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      padding: 4px 0;
+      color: var(--charcoal);
+    }
+
+    .color-rules li::before {
+      content: "\2014  ";
+      color: var(--muted);
+    }
+
+    /* ========================================================
+       TYPOGRAPHY SPECIMENS
+       ======================================================== */
+    .type-specimen {
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      padding: var(--s4);
+      margin-bottom: var(--s3);
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: var(--s4);
+      align-items: start;
+    }
+
+    .type-meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .type-meta strong {
+      color: var(--charcoal);
+      display: block;
+      font-size: 12px;
+      margin-bottom: 4px;
+    }
+
+    .type-preview-h1 {
+      font-size: 42px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      line-height: 1.28;
+    }
+
+    .type-preview-h2 {
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      line-height: 1.33;
+    }
+
+    .type-preview-h3 {
+      font-size: 20px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+    }
+
+    .type-preview-body {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+    }
+
+    .type-preview-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .type-preview-editorial {
+      font-family: var(--font-serif);
+      font-size: 22px;
+      line-height: 1.4;
+    }
+
+    /* ========================================================
+       SPACING
+       ======================================================== */
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: var(--s3);
+      margin-bottom: var(--s3);
+    }
+
+    .spacing-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--muted);
+      width: 80px;
+      text-align: right;
+    }
+
+    .spacing-bar {
+      height: 24px;
+      background: var(--charcoal);
+      border-radius: 4px;
+      opacity: 0.15;
+    }
+
+    .spacing-px {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    /* ========================================================
+       COMPONENTS
+       ======================================================== */
+    .btn-row {
+      display: flex;
+      gap: var(--s3);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 999px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.85; }
+
+    .btn-primary {
+      background: var(--charcoal);
+      color: var(--white);
+    }
+
+    .btn-accent {
+      background: var(--magenta);
+      color: var(--white);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--charcoal);
+      border: 1px solid var(--charcoal);
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: var(--charcoal);
+    }
+
+    .component-rules {
+      margin-top: var(--s5);
+    }
+
+    .rule-block {
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      padding: var(--s4);
+      margin-bottom: var(--s3);
+    }
+
+    .rule-block ul {
+      list-style: none;
+      margin-top: var(--s2);
+    }
+
+    .rule-block li {
+      font-size: 14px;
+      padding: 3px 0;
+      color: var(--muted);
+    }
+
+    .rule-block li::before {
+      content: "\2014  ";
+    }
+
+    /* ========================================================
+       VISUAL DNA
+       ======================================================== */
+    .dna-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s4);
+    }
+
+    .dna-card {
+      border: 1px solid var(--hairline);
+      border-radius: var(--radius);
+      padding: var(--s4);
+    }
+
+    .dna-card ul {
+      list-style: none;
+      margin-top: var(--s2);
+    }
+
+    .dna-card li {
+      font-size: 14px;
+      padding: 3px 0;
+    }
+
+    .dna-card li::before {
+      content: "\2022  ";
+      color: var(--magenta);
+    }
+
+    /* ========================================================
+       NEVER LIST
+       ======================================================== */
+    .never-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--s3);
+    }
+
+    .never-item {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      padding: 12px 16px;
+      background: var(--bg-subtle);
+      border-radius: var(--radius);
+      color: var(--muted);
+    }
+
+    .never-item::before {
+      content: "\2715  ";
+      color: #E53E3E;
+    }
+
+    /* ========================================================
+       PROMPT BLOCK
+       ======================================================== */
+    .prompt-block {
+      background: var(--charcoal);
+      color: rgba(255,255,255,0.85);
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.7;
+      padding: var(--s5);
+      border-radius: var(--radius);
+      white-space: pre-wrap;
+      word-break: break-word;
+      position: relative;
+    }
+
+    .prompt-block .copy-hint {
+      position: absolute;
+      top: var(--s3);
+      right: var(--s3);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+    }
+
+    /* ========================================================
+       FOOTER
+       ======================================================== */
+    .footer {
+      padding: var(--s7) 0 var(--s5) 0;
+      text-align: center;
+    }
+
+    .footer-text {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ========================================================
+       RESPONSIVE
+       ======================================================== */
+    @media (max-width: 768px) {
+      .swatches { grid-template-columns: repeat(2, 1fr); }
+      .identity-grid { grid-template-columns: 1fr; }
+      .type-specimen { grid-template-columns: 1fr; }
+      .dna-grid { grid-template-columns: 1fr; }
+      .never-grid { grid-template-columns: 1fr 1fr; }
+      .header h1 { font-size: 28px; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <!-- ====================================================
+       HEADER
+       ==================================================== -->
+  <div class="header">
+    <img src="DeadSoxy_New_Logo.png" alt="DeadSoxy" class="header-logo" />
+    <h1>Design System</h1>
+    <div class="header-meta">V1.0 &mdash; Source of truth for AI, web, packaging, decks &mdash; Updated 2026-02-25</div>
+  </div>
+
+  <!-- ====================================================
+       IDENTITY
+       ==================================================== -->
+  <div class="section">
+    <div class="kicker">01 &mdash; Identity</div>
+    <div class="section-title">Brand Core</div>
+
+    <div class="identity-grid">
+      <div class="identity-card">
+        <div class="kicker">Core Line</div>
+        <div class="value">Smart design, premium fabrics, superior socks.</div>
+      </div>
+      <div class="identity-card">
+        <div class="kicker">Positioning</div>
+        <div class="value">Premium everyday socks. Engineered details. The difference is in the construction.</div>
+      </div>
+    </div>
+
+    <div style="margin-top: var(--s5);">
+      <div class="kicker">Voice Tone</div>
+      <div class="tone-tags">
+        <span class="tone-tag">Confident</span>
+        <span class="tone-tag">Precise</span>
+        <span class="tone-tag">Refined</span>
+        <span class="tone-tag">Engineered</span>
+        <span class="tone-tag">Southern Grit</span>
+      </div>
+    </div>
+
+    <div style="margin-top: var(--s5);">
+      <div class="kicker">Anti-Brand &mdash; We Are Not</div>
+      <ul class="anti-list">
+        <li>Streetwear</li>
+        <li>Loud or neon</li>
+        <li>Cartoonish or playful</li>
+        <li>Hypebeast</li>
+        <li>Corporate sterile</li>
+        <li>Fast fashion</li>
+        <li>Ironic or jokey</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       COLORS
+       ==================================================== -->
+  <div class="section">
+    <div class="kicker">02 &mdash; Color System</div>
+    <div class="section-title">Palette + Usage Rules</div>
+
+    <div class="swatches">
+      <div class="swatch">
+        <div class="swatch-chip" style="background: #2D2D2D;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Charcoal</div>
+          <div class="swatch-hex">#2D2D2D &middot; PMS Black 3C</div>
+          <div class="swatch-role">Primary &mdash; text, UI, headlines</div>
+          <div class="swatch-rule">Min 50% usage</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-chip" style="background: #D500F8;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Magenta</div>
+          <div class="swatch-hex">#D500F8 &middot; PMS 2582C</div>
+          <div class="swatch-role">Accent &mdash; CTAs, links, highlights</div>
+          <div class="swatch-rule">Max 20% usage</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-chip" style="background: #FFBB3B;"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">Gold</div>
+          <div class="swatch-hex">#FFBB3B &middot; PMS 136C</div>
+          <div class="swatch-role">Rare accent &mdash; premium moments</div>
+          <div class="swatch-rule">Max 8% usage</div>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-chip" style="background: #FFFFFF; border-bottom: 1px solid rgba(45,45,45,0.12);"></div>
+        <div class="swatch-info">
+          <div class="swatch-name">White</div>
+          <div class="swatch-hex">#FFFFFF</div>
+          <div class="swatch-role">Primary background</div>
+          <div class="swatch-rule">Default canvas</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="color-rules">
+      <div class="kicker">Hard Rules</div>
+      <ul>
+        <li>Never use gradients unless explicitly approved</li>
+        <li>Never use drop shadows on text</li>
+        <li>Never combine magenta and gold in the same element</li>
+        <li>Accent colors are highlights, not fills</li>
+        <li>When in doubt: more charcoal + white, less accent</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       TYPOGRAPHY
+       ==================================================== -->
+  <div class="section">
+    <div class="kicker">03 &mdash; Typography</div>
+    <div class="section-title">Hierarchy + Specimens</div>
+
+    <div class="type-specimen">
+      <div class="type-meta">
+        <strong>H1</strong>
+        Gotham Book &middot; 700<br />
+        42px / 54px<br />
+        Tracking 0.02em<br />
+        Uppercase<br />
+        Max 40 chars
+      </div>
+      <div class="type-preview-h1">Built to Stay Up</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta">
+        <strong>H2</strong>
+        Gotham Book &middot; 700<br />
+        30px / 40px<br />
+        Tracking 0.04em<br />
+        Uppercase
+      </div>
+      <div class="type-preview-h2">Premium Construction</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta">
+        <strong>H3</strong>
+        Gotham Book &middot; 500<br />
+        20px / 28px<br />
+        Tracking 0.02em<br />
+        Sentence case
+      </div>
+      <div class="type-preview-h3">Details that matter, from toe to cuff.</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta">
+        <strong>Body</strong>
+        Gotham Book &middot; 400<br />
+        16px / 1.6<br />
+        Tracking 0.01em<br />
+        Sentence case
+      </div>
+      <div class="type-preview-body">Premium materials. Clean construction. Every pair is engineered for comfort that lasts &mdash; not the kind that falls apart after three washes.</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta">
+        <strong>Label</strong>
+        Gotham Book &middot; 500<br />
+        12px / 16px<br />
+        Tracking 0.08em<br />
+        Uppercase
+      </div>
+      <div class="type-preview-label">Reinforced Heel &middot; Merino Blend &middot; Made in USA</div>
+    </div>
+
+    <div class="type-specimen">
+      <div class="type-meta">
+        <strong>Editorial</strong>
+        Mrs Eaves Roman &middot; 400<br />
+        22px / 1.4<br />
+        Sentence case<br />
+        Max 1 per layout
+      </div>
+      <div class="type-preview-editorial">A premium essential you reach for first.</div>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       SPACING
+       ==================================================== -->
+  <div class="section">
+    <div class="kicker">04 &mdash; Spacing Scale</div>
+    <div class="section-title">8pt Grid System</div>
+
+    <div class="spacing-row">
+      <div class="spacing-label">xs</div>
+      <div class="spacing-bar" style="width: 4px;"></div>
+      <div class="spacing-px">4px</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">sm</div>
+      <div class="spacing-bar" style="width: 8px;"></div>
+      <div class="spacing-px">8px</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">md</div>
+      <div class="spacing-bar" style="width: 16px;"></div>
+      <div class="spacing-px">16px</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">lg</div>
+      <div class="spacing-bar" style="width: 24px;"></div>
+      <div class="spacing-px">24px</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">xl</div>
+      <div class="spacing-bar" style="width: 32px;"></div>
+      <div class="spacing-px">32px</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">2xl</div>
+      <div class="spacing-bar" style="width: 48px;"></div>
+      <div class="spacing-px">48px</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">3xl</div>
+      <div class="spacing-bar" style="width: 64px;"></div>
+      <div class="spacing-px">64px</div>
+    </div>
+    <div class="spacing-row">
+      <div class="spacing-label">4xl</div>
+      <div class="spacing-bar" style="width: 96px;"></div>
+      <div class="spacing-px">96px</div>
+    </div>
+
+    <div class="note">Use this scale only. No arbitrary padding or margin values. When in doubt, add more space.</div>
+  </div>
+
+  <!-- ====================================================
+       COMPONENTS
+       ==================================================== -->
+  <div class="section">
+    <div class="kicker">05 &mdash; Components</div>
+    <div class="section-title">Buttons + Elements</div>
+
+    <div class="btn-row">
+      <button class="btn btn-primary">Add to Cart</button>
+      <button class="btn btn-accent">Shop Now</button>
+      <button class="btn btn-ghost">Learn More</button>
+      <button class="btn btn-gold">Limited Drop</button>
+    </div>
+
+    <div class="component-rules">
+      <div class="rule-block">
+        <div class="kicker">Button Rules</div>
+        <ul>
+          <li>Pill shape (999px radius) &mdash; always</li>
+          <li>Uppercase, 12px, 0.1em tracking</li>
+          <li>Padding: 14px top/bottom, 28px sides</li>
+          <li>Max one accent button per page</li>
+          <li>Hover: opacity 0.85 &mdash; no color shift, no scale</li>
+        </ul>
+      </div>
+
+      <div class="rule-block">
+        <div class="kicker">Cards</div>
+        <ul>
+          <li>1px border, rgba(45,45,45,0.12)</li>
+          <li>12px corner radius</li>
+          <li>No shadow &mdash; ever</li>
+          <li>24px internal padding</li>
+        </ul>
+      </div>
+
+      <div class="rule-block">
+        <div class="kicker">Callout Lines</div>
+        <ul>
+          <li>1px stroke, charcoal #2D2D2D</li>
+          <li>Straight lines only &mdash; no curves, no decorative arrows</li>
+          <li>Snap to grid, 90 or 45 degree angles</li>
+        </ul>
+      </div>
+
+      <div class="rule-block">
+        <div class="kicker">Icons</div>
+        <ul>
+          <li>Outline only, 1.5px stroke</li>
+          <li>Charcoal color only</li>
+          <li>Never filled, never colored, never illustrated</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       VISUAL DNA
+       ==================================================== -->
+  <div class="section">
+    <div class="kicker">06 &mdash; Visual DNA</div>
+    <div class="section-title">Image + Composition Rules</div>
+
+    <div class="dna-grid">
+      <div class="dna-card">
+        <div class="kicker">Product Photography</div>
+        <ul>
+          <li>Pure white background</li>
+          <li>Soft grounded shadow</li>
+          <li>Three-quarter angle, eye level</li>
+          <li>Soft studio light</li>
+          <li>Shallow depth of field</li>
+          <li>Clean edges, no grain</li>
+          <li>Apple-like minimal precision</li>
+        </ul>
+      </div>
+
+      <div class="dna-card">
+        <div class="kicker">Product Photography &mdash; Never</div>
+        <ul>
+          <li>Props (unless lifestyle category)</li>
+          <li>Textured backgrounds</li>
+          <li>Glossy or 3D effects</li>
+          <li>Filters or color grading</li>
+          <li>Busy compositions</li>
+          <li>Text overlay on product</li>
+        </ul>
+      </div>
+
+      <div class="dna-card">
+        <div class="kicker">Infographics</div>
+        <ul>
+          <li>1px charcoal callout lines</li>
+          <li>Perfect grid alignment</li>
+          <li>Uppercase micro-labels</li>
+          <li>No decorative elements</li>
+          <li>Minimal, clean data viz</li>
+        </ul>
+      </div>
+
+      <div class="dna-card">
+        <div class="kicker">Lifestyle</div>
+        <ul>
+          <li>Natural, confident, unstaged</li>
+          <li>Natural or soft outdoor light</li>
+          <li>Real people, not overly styled</li>
+          <li>Never overly posed</li>
+          <li>Never stock-photo compositions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       NEVER LIST
+       ==================================================== -->
+  <div class="section">
+    <div class="kicker">07 &mdash; Guardrails</div>
+    <div class="section-title">Never Use</div>
+
+    <div class="never-grid">
+      <div class="never-item">Random gradients</div>
+      <div class="never-item">Drop shadows on text</div>
+      <div class="never-item">Lens flares or light leaks</div>
+      <div class="never-item">Over-saturated colors</div>
+      <div class="never-item">Script or handwriting fonts</div>
+      <div class="never-item">Cheap mockup textures</div>
+      <div class="never-item">Stock-photo compositions</div>
+      <div class="never-item">Rounded bubbly shapes</div>
+      <div class="never-item">Neon colors</div>
+      <div class="never-item">Busy pattern backgrounds</div>
+      <div class="never-item">Multiple accents per layout</div>
+      <div class="never-item">Exclamation marks in headlines</div>
+      <div class="never-item">Novelty or decorative fonts</div>
+      <div class="never-item">Clip art or cartoon illustrations</div>
+      <div class="never-item">Emoji in professional materials</div>
+    </div>
+  </div>
+
+  <!-- ====================================================
+       MASTER PROMPT
+       ==================================================== -->
+  <div class="section">
+    <div class="kicker">08 &mdash; AI Master Prompt</div>
+    <div class="section-title">Copy + Paste Into Any AI Tool</div>
+
+    <div class="prompt-block"><span class="copy-hint">Copy this block</span>You are designing for DeadSoxy, a premium everyday sock brand.
+
+BRAND: Confident, precise, engineered, refined. Never loud, never hypey.
+
+COLORS:
+- Charcoal #2D2D2D &mdash; primary (min 50%)
+- Magenta #D500F8 &mdash; accent (max 20%)
+- Gold #FFBB3B &mdash; rare accent (max 8%)
+- White #FFFFFF &mdash; primary background
+
+TYPOGRAPHY:
+- Gotham Book (Inter/Helvetica Neue fallback) &mdash; all UI, headlines, body
+- Mrs Eaves Roman (Georgia fallback) &mdash; editorial only, max 1 per layout
+- Headlines: uppercase, bold, tight tracking
+- Body: sentence case, 16px, 1.6 line height
+- Labels: uppercase, 12px, wide letter spacing
+
+LAYOUT:
+- 8pt grid: 4, 8, 16, 24, 32, 48, 64, 96px
+- 12px corner radius
+- Generous whitespace
+- Perfect alignment
+
+NEVER:
+- Gradients, drop shadows on text, lens flares
+- Script fonts, decorative fonts
+- Busy patterns, textured backgrounds
+- Neon colors, over-saturated palettes
+- Stock-photo compositions
+- Hype words: "ultimate", "next level", "game changer"</div>
+  </div>
+
+  <!-- ====================================================
+       FOOTER
+       ==================================================== -->
+  <div class="footer">
+    <img src="DeadSoxy_New_Logo.png" alt="DeadSoxy" style="height: 20px; opacity: 0.3; margin-bottom: var(--s3);" /><br />
+    <div class="footer-text">DeadSoxy Design System V1.0 &mdash; Built for AI, humans, and everyone in between.</div>
+  </div>
+
+</div>
+</body>
+</html>

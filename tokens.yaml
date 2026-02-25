@@ -1,0 +1,321 @@
+# ============================================================
+# DEADSOXY DESIGN SYSTEM — V1.0
+# Machine-readable brand tokens for AI tools
+# ============================================================
+# Paste this (or relevant sections) into any AI tool's context
+# window before giving design instructions.
+# ============================================================
+
+system:
+  name: "DeadSoxy Design System"
+  version: "1.0"
+  updated: "2026-02-25"
+  purpose: "Structured brand constraints for AI design tools"
+
+# ------------------------------------------------------------
+# BRAND IDENTITY
+# ------------------------------------------------------------
+identity:
+  name: "DeadSoxy"
+  core_line: "Smart design, premium fabrics, superior socks."
+  positioning: >
+    DeadSoxy makes premium everyday socks engineered with superior
+    materials and smart construction details. For people who care
+    about what they put on — not hype, not fashion, just better
+    product. The difference is in the details.
+
+  tone:
+    voice_adjectives:
+      - Confident
+      - Precise
+      - Refined
+      - Engineered
+      - Southern grit
+    sentence_style: "Short. Direct. Product-first."
+    emotional_temperature: "Calm confidence — never loud, never desperate"
+    max_sentence_length_words: 18
+    banned_words:
+      - ultimate
+      - next level
+      - game changer
+      - revolutionary
+      - disruptive
+      - crushing it
+      - insane
+      - fire
+      - sick
+      - vibes
+    banned_phrases:
+      - "take your ___ to the next level"
+      - "not your average"
+      - "reimagined for the modern"
+      - "say goodbye to"
+
+  anti_brand:
+    - Not streetwear
+    - Not loud or neon
+    - Not cartoonish
+    - Not hypebeast
+    - Not corporate sterile
+    - Not fast fashion
+    - Not ironic or jokey
+
+# ------------------------------------------------------------
+# LOGO
+# ------------------------------------------------------------
+logo:
+  primary:
+    file: "DeadSoxy_New_Logo.png"
+    style: "Serif wordmark, tracked lettering"
+    color: "Charcoal on light backgrounds"
+  inverted:
+    file: "DeadSoxy_New_Logo_white.png"
+    style: "White wordmark on dark backgrounds"
+  rules:
+    - No effects (no bevel, glow, drop shadow, outline)
+    - No distortion or stretching
+    - No rotation
+    - No color changes beyond approved black/white
+    - Clear space: minimum 1x logo height on all sides
+    - Never place on busy or textured backgrounds
+    - Never pair with other logos at equal size
+
+# ------------------------------------------------------------
+# COLOR SYSTEM
+# ------------------------------------------------------------
+colors:
+  charcoal:
+    hex: "#2D2D2D"
+    rgb: [45, 45, 45]
+    pantone: "PMS Black 3C"
+    role: "Primary — text, UI, headlines, default ink"
+    min_usage_percent: 50
+    notes: "This is the dominant brand color. Most of what you see should be charcoal + white."
+
+  magenta:
+    hex: "#D500F8"
+    rgb: [213, 0, 248]
+    pantone: "PMS 2582C"
+    role: "Primary accent — CTAs, links, key highlights"
+    max_usage_percent: 20
+    notes: "Use sparingly. One accent moment per section max. Never fill large areas."
+
+  gold:
+    hex: "#FFBB3B"
+    rgb: [255, 187, 59]
+    pantone: "PMS 136C"
+    role: "Rare accent — premium warmth, seasonal, special callouts"
+    max_usage_percent: 8
+    notes: "Rarest color. Reserve for premium moments. Never combine with magenta."
+
+  white:
+    hex: "#FFFFFF"
+    rgb: [255, 255, 255]
+    role: "Primary background"
+    notes: "Default canvas. Generous whitespace is a brand trait."
+
+  color_rules:
+    - Never use gradients unless explicitly approved for a specific asset
+    - Never use drop shadows on text
+    - Never combine magenta and gold in the same element
+    - Accent colors are highlights, not fills
+    - When in doubt, use more charcoal + white, less accent
+
+# ------------------------------------------------------------
+# TYPOGRAPHY
+# ------------------------------------------------------------
+typography:
+  primary_font:
+    name: "Gotham Book"
+    role: "Primary — headlines, body, UI, labels, everything except editorial"
+    web_fallback: "Inter, 'Helvetica Neue', Arial, sans-serif"
+    weights_available: [400, 500, 700]
+
+  secondary_font:
+    name: "Mrs Eaves Roman"
+    role: "Editorial moments only — premium storytelling, packaging accent lines, taglines"
+    web_fallback: "Georgia, 'Times New Roman', serif"
+    weights_available: [400]
+    restriction: "Never use for UI, buttons, labels, or body copy"
+
+  hierarchy:
+    h1:
+      font: "Gotham Book"
+      weight: 700
+      size_px: 42
+      line_height_px: 54
+      letter_spacing_em: 0.02
+      casing: "uppercase"
+      usage: "Hero headlines only. One per page/section."
+      max_characters: 40
+
+    h2:
+      font: "Gotham Book"
+      weight: 700
+      size_px: 30
+      line_height_px: 40
+      letter_spacing_em: 0.04
+      casing: "uppercase"
+      usage: "Section headers"
+      max_characters: 50
+
+    h3:
+      font: "Gotham Book"
+      weight: 500
+      size_px: 20
+      line_height_px: 28
+      letter_spacing_em: 0.02
+      casing: "sentence_case"
+      usage: "Subheads, feature titles"
+      max_characters: 60
+
+    body:
+      font: "Gotham Book"
+      weight: 400
+      size_px: 16
+      line_height: 1.6
+      letter_spacing_em: 0.01
+      casing: "sentence_case"
+      usage: "Default paragraph text"
+
+    label:
+      font: "Gotham Book"
+      weight: 500
+      size_px: 12
+      line_height_px: 16
+      letter_spacing_em: 0.08
+      casing: "uppercase"
+      usage: "Eyebrows, micro-labels, callout tags, metadata"
+
+    editorial:
+      font: "Mrs Eaves Roman"
+      weight: 400
+      size_px: 22
+      line_height: 1.4
+      casing: "sentence_case"
+      usage: "Brand moments, premium storytelling, packaging accent lines"
+      restriction: "Max 1 editorial element per layout"
+
+  type_rules:
+    - Headlines are uppercase Gotham unless editorial
+    - Body text is always sentence case
+    - No script fonts ever
+    - No decorative fonts ever
+    - No italic unless quoting someone
+    - Punctuation in headlines: periods allowed, no exclamation marks
+    - Em dashes over hyphens for breaks
+
+# ------------------------------------------------------------
+# SPACING + LAYOUT
+# ------------------------------------------------------------
+layout:
+  grid: "8pt"
+  spacing_scale_px: [4, 8, 16, 24, 32, 48, 64, 96]
+  corner_radius_px: 12
+  max_content_width_px: 1120
+  rules:
+    - Use spacing scale only — no arbitrary padding or margins
+    - Generous whitespace is mandatory — when in doubt, add more space
+    - Perfect alignment on all axes
+    - One dominant element per section (one headline, one CTA)
+    - No clutter — if it doesn't serve a purpose, remove it
+
+# ------------------------------------------------------------
+# COMPONENTS
+# ------------------------------------------------------------
+components:
+  buttons:
+    primary:
+      background: "#2D2D2D"
+      text_color: "#FFFFFF"
+      font: "Gotham Book"
+      size_px: 12
+      casing: "uppercase"
+      letter_spacing_em: 0.1
+      padding: "14px 28px"
+      border_radius: "999px"
+      hover: "opacity 0.85"
+    accent:
+      background: "#D500F8"
+      text_color: "#FFFFFF"
+      same_rules_as: "primary"
+      usage: "One per page max. High-priority CTA only."
+    ghost:
+      background: "transparent"
+      border: "1px solid #2D2D2D"
+      text_color: "#2D2D2D"
+      same_rules_as: "primary"
+      usage: "Secondary actions"
+
+  callout_lines:
+    stroke_width_px: 1
+    color: "#2D2D2D"
+    style: "straight, no curves, no arrows unless diagrammatic"
+    alignment: "snap to grid, perfect 90 or 45 degree angles"
+
+  cards:
+    border: "1px solid rgba(45,45,45,0.14)"
+    border_radius_px: 12
+    shadow: "none"
+    padding: "24px"
+
+  icons:
+    style: "outline only, 1.5px stroke"
+    color: "#2D2D2D"
+    never: "filled icons, colored icons, illustrated icons"
+
+# ------------------------------------------------------------
+# IMAGE / VISUAL DNA
+# ------------------------------------------------------------
+visual_dna:
+  product_photography:
+    background: "pure white"
+    shadow: "soft grounded shadow, subtle"
+    angle: "three-quarter preferred"
+    camera_height: "eye level"
+    depth_of_field: "shallow"
+    texture: "clean, no grain"
+    lighting: "soft studio light, no harsh shadows"
+    aesthetic: "Apple-like minimal precision"
+    never:
+      - Props unless lifestyle category
+      - Textured backgrounds
+      - Glossy or 3D effects
+      - Filters or color grading
+      - Busy compositions
+
+  infographics:
+    callout_lines: "1px charcoal"
+    grid: "perfect alignment"
+    labels: "uppercase micro-labels"
+    decorative_elements: "none"
+    data_visualization: "minimal, clean, no 3D charts"
+
+  lifestyle:
+    tone: "natural, confident, unstaged feel"
+    lighting: "natural window light or soft outdoor"
+    subjects: "real people, not overly styled"
+    never:
+      - Overly posed
+      - Studio-perfect skin retouching
+      - Stock photo compositions
+
+# ------------------------------------------------------------
+# NEVER LIST (AI GUARDRAILS)
+# ------------------------------------------------------------
+never:
+  - Random gradients
+  - Drop shadows on text
+  - Lens flares or light leaks
+  - Over-saturated colors
+  - Script or handwriting fonts
+  - Cheap mockup textures
+  - Stock-photo-style compositions
+  - Rounded bubbly shapes
+  - Neon colors
+  - Busy patterns as backgrounds
+  - Multiple accent colors in one layout
+  - Emoji in professional materials
+  - Exclamation marks in headlines
+  - Comic Sans, Papyrus, or any novelty font
+  - Clip art or cartoon illustrations
