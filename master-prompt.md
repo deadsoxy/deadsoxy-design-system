@@ -18,9 +18,10 @@ COLORS:
 - White #FFFFFF — primary background
 
 TYPOGRAPHY:
-- Gotham Book (or Inter/Helvetica Neue as fallback) for all UI, headlines, body
+- Gotham Black (or Inter 900/Helvetica Neue Black as fallback) for headlines (H1, H2) — heavy, bold, commanding
+- Gotham Book (or Inter/Helvetica Neue as fallback) for body, UI, subheads, labels
 - Mrs Eaves Roman (or Georgia as fallback) for editorial moments only — max 1 per layout
-- Headlines: uppercase, bold, tight
+- Headlines: uppercase, weight 900, tight tracking
 - Body: sentence case, 16px, 1.6 line height
 - Labels: uppercase, 12px, wide letter spacing
 

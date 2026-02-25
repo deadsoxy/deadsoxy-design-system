@@ -129,11 +129,18 @@ colors:
 # TYPOGRAPHY
 # ------------------------------------------------------------
 typography:
+  headline_font:
+    name: "Gotham Black"
+    role: "Headlines and ads — H1, H2, hero text, ad headlines"
+    web_fallback: "Inter, 'Helvetica Neue', Arial, sans-serif"
+    weight: 900
+    notes: "The heavy, bold look that defines DeadSoxy headlines. Always uppercase."
+
   primary_font:
     name: "Gotham Book"
-    role: "Primary — headlines, body, UI, labels, everything except editorial"
+    role: "Body, UI, labels, subheads — everything except headlines and editorial"
     web_fallback: "Inter, 'Helvetica Neue', Arial, sans-serif"
-    weights_available: [400, 500, 700]
+    weights_available: [400, 500]
 
   secondary_font:
     name: "Mrs Eaves Roman"
@@ -144,23 +151,23 @@ typography:
 
   hierarchy:
     h1:
-      font: "Gotham Book"
-      weight: 700
+      font: "Gotham Black"
+      weight: 900
       size_px: 42
       line_height_px: 54
       letter_spacing_em: 0.02
       casing: "uppercase"
-      usage: "Hero headlines only. One per page/section."
+      usage: "Hero headlines, ad headlines. One per page/section."
       max_characters: 40
 
     h2:
-      font: "Gotham Book"
-      weight: 700
+      font: "Gotham Black"
+      weight: 900
       size_px: 30
       line_height_px: 40
       letter_spacing_em: 0.04
       casing: "uppercase"
-      usage: "Section headers"
+      usage: "Section headers, ad subheads"
       max_characters: 50
 
     h3:
@@ -201,7 +208,8 @@ typography:
       restriction: "Max 1 editorial element per layout"
 
   type_rules:
-    - Headlines are uppercase Gotham unless editorial
+    - Headlines (H1, H2) are uppercase Gotham Black (weight 900)
+    - Subheads (H3) and body use Gotham Book
     - Body text is always sentence case
     - No script fonts ever
     - No decorative fonts ever
